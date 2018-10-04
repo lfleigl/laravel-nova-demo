@@ -16,6 +16,6 @@ class DepartMent extends Model
 
     public function locations()
     {
-        return $this->hasMany("App\Locations");
+        return $this->hasMany("App\Location", 'dep_id', 'department_id');
     }
 }

@@ -22,6 +22,10 @@ class CreateWarehousesTable extends Migration
             $table->integer('comp_id')->unsigned();
             $table->foreign('comp_id')->references('company_id')->on('companies');
             $table->index(['comp_id']);
+            $table->integer('loc_id')->unsigned();
+            $table->foreign('loc_id')->references('location_id')->on('locations');
+            $table->index(['loc_id']);
+
             $table->timestamps();
         });
     }

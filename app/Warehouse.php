@@ -17,4 +17,9 @@ class Warehouse extends Model
     {
         return $this->belongsTo("\App\Department", 'dep_id', 'department_id');
     }
+
+    public function location()
+    {
+        return $this->belongsTo("\App\Location", 'loc_id', 'location_id');
+    }
 }

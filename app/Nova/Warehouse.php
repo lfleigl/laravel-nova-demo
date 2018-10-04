@@ -54,10 +54,15 @@ class Warehouse extends Resource
                 ->options(\App\Company::all()),
             NovaBelongsToDepend::make('DepartMent')
                 ->optionsResolve(function ($company) {
-                    return $company->departments;
+                    return $company->departments()->get(['department_id', 'name']);
                 })
                 ->dependsOn('Company'),
-        ];
+            NovaBelongsToDepend::make('Location')
+                ->optionsResolve(function ($department) {
+                    return $department->locations()->get(['location_id', 'name']);
+                })
+                ->dependsOn('DepartMent'),
+            ];
     }
 
     /**
